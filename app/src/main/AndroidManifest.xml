@@ -12,16 +12,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".intro">
+        <activity android:name=".votacion">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".central" />
+        <activity android:name=".intro">
 
         </activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

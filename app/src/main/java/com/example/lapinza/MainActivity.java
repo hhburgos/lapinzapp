@@ -3,6 +3,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -52,7 +53,16 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
     }
 
-    public static class DescargarImagen extends AsyncTask<String, Void, String> {
+    public void mostrarCentralLayout(Context context) {
+        Intent i = new Intent(context, central.class);
+        startActivity(i);
+    }
+
+    public void mensaje (String m) {
+        Toast.makeText(this, m, Toast.LENGTH_LONG).show();
+    }
+
+    public class DescargarImagen extends AsyncTask<String, Void, String> {
         private WeakReference<Context> context;
 
         public DescargarImagen(Context context) {
@@ -114,7 +124,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
         }
 
         protected void onPostExecute(String resultado) {
-            Toast.makeText(context.get(), resultado, Toast.LENGTH_LONG).show();
+            if (resultado.equals("inicio exitoso")) {
+                mostrarCentralLayout(context.get());
+            } else {
+                Toast.makeText(context.get(), resultado , Toast.LENGTH_LONG).show();
+            }
         }
     }
 
