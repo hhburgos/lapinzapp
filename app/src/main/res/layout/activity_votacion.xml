@@ -53,7 +53,7 @@
         android:id="@+id/btAnteriorMC"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/holo_orange_light"
+        android:background="@android:color/darker_gray"
         android:text="Anterior"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline22"
@@ -64,7 +64,7 @@
         android:id="@+id/btSiguienteMC"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@android:color/holo_green_light"
+        android:background="@android:color/darker_gray"
         android:text="Siguiente"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline21"
@@ -93,7 +93,7 @@
         app:layout_constraintGuide_percent="0.54" />
 
     <Button
-        android:id="@+id/button7"
+        android:id="@+id/bt2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -105,7 +105,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/bt1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -117,7 +117,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
     <Button
-        android:id="@+id/button9"
+        android:id="@+id/bt0"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -129,7 +129,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/bt3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -141,7 +141,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline26" />
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/bt15"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -153,7 +153,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/bt25"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -165,7 +165,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/bt35"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -177,7 +177,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/bt05"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -189,7 +189,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline27" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/btplus0"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/holo_blue_light"
@@ -201,7 +201,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline28" />
 
     <Button
-        android:id="@+id/button16"
+        android:id="@+id/btplus05"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/holo_blue_light"
@@ -213,7 +213,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline28" />
 
     <Button
-        android:id="@+id/button17"
+        android:id="@+id/btplus1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/holo_blue_light"
@@ -225,7 +225,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline28" />
 
     <Button
-        android:id="@+id/button18"
+        android:id="@+id/bt4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/white"
@@ -271,7 +271,7 @@
         app:layout_constraintGuide_percent="0.37" />
 
     <ProgressBar
-        android:id="@+id/progressBar"
+        android:id="@+id/progressBarBattle"
         style="?android:attr/progressBarStyleHorizontal"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -281,7 +281,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline30" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvActualMC"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:gravity="center"
@@ -308,7 +308,7 @@
         app:layout_constraintGuide_percent="0.27" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvAnteriorMC"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/darker_gray"
@@ -320,7 +320,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline32" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvSiguienteMC"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/darker_gray"
@@ -332,7 +332,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline32" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/tvTextAnteriorMC"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/black"
@@ -345,7 +345,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline33" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvTextSiguienteMC"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@android:color/black"
@@ -356,4 +356,18 @@
         app:layout_constraintEnd_toStartOf="@+id/guideline21"
         app:layout_constraintStart_toStartOf="@+id/guideline22"
         app:layout_constraintTop_toTopOf="@+id/guideline33" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.19" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.23" />
 </androidx.constraintlayout.widget.ConstraintLayout>
