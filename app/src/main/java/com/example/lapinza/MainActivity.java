@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener {
 
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)
         protected String doInBackground(String... params) {
-            String registrarURL = "http://lapinza.club/conexion.php";
+            String registrarURL = "http://lapinza.club/login.php";
             String resultado;
             int control = 0;
 
