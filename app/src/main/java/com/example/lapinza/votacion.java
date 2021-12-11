@@ -3,6 +3,7 @@ package com.example.lapinza;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,10 +15,11 @@ import java.util.Collections;
 public class votacion extends AppCompatActivity implements View.OnClickListener {
 
     ArrayList<String> participantes;
+    double [] notas;
     Button btSiguienteMC, btAnteriorMC;
     Button bt0, bt05, bt1, bt15, bt2, bt25, bt3, bt35, bt4, btplus0, btplus05, btplus1;
-    TextView tvSiguienteMC, tvAnteriorMC, tvActualMC;
-    int nIntervencion;
+    TextView tvSiguienteMC, tvAnteriorMC, tvActualMC, tvVar;
+    int nIntervencion, turno;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,27 +27,60 @@ public class votacion extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_votacion);
 
         inicializar();
-        actualizaOrden();
+        inicializaOrden();
     }
 
     @Override
     public void onClick(View v) {
         if (v.getId() == btSiguienteMC.getId()) {
-
+            adelantar();
+            muestraDatos();
         }
         else if(v.getId() == btAnteriorMC.getId()){
-
+            retroceder();
+            muestraDatos();
         } else {
             mensaje("otro");
         }
     }
 
-    public void actualizaOrden () {
-        //mezclarArray()
-        Collections.shuffle(participantes);
+    public void inicializaOrden () {
+        Collections.shuffle(participantes); //barajea los participantes
+
         tvAnteriorMC.setText("--");
         tvActualMC.setText(participantes.get(0));
         tvSiguienteMC.setText(participantes.get(1));
+    }
+
+    public void muestraDatos () {
+        tvVar.setText("turno: " + turno);
+        tvActualMC.setText(participantes.get(turno));
+        tvAnteriorMC.setText(dameAnteriorMC());
+        tvSiguienteMC.setText(dameSiguienteMC());
+    }
+
+    public String dameSiguienteMC () {
+        String dev = "";
+        tvVar.setText("turno: " + turno);
+        if (turno == (participantes.size() - 1)) {
+            dev = participantes.get(0);
+        } else {
+            dev = participantes.get(turno + 1);
+            tvVar.setText("turno: " + turno + "  sigui: " + (turno+1) + " sizeA: " + participantes.size());
+            Log.e("Siguiente ", String.valueOf(turno));
+        }
+
+        return dev;
+    }
+
+    public String dameAnteriorMC () {
+        String dev = "";
+        if (turno == 0) {
+            dev = participantes.get(participantes.size() - 1);
+        } else {
+            dev = participantes.get(turno - 1);
+        }
+        return dev;
     }
 
     public void cargaArrayList () {
@@ -55,10 +90,30 @@ public class votacion extends AppCompatActivity implements View.OnClickListener 
         participantes.add("Cixer");
     }
 
+    public void retroceder () {
+        if (turno == 0) {
+            turno = (participantes.size() - 1);
+        } else {
+            turno -= 1;
+        }
+    }
+
+    public void adelantar () {
+        if (turno == participantes.size() - 1) {
+            turno = 0;
+        } else {
+            turno += 1;
+        }
+    }
+
     public void inicializar () {
         nIntervencion = 0;
+        turno = 0;
 
         participantes = new ArrayList<String>();
+        mensaje("participantes size: " + participantes.size());
+        notas = new double[participantes.size()];
+
         cargaArrayList();
 
         btSiguienteMC = findViewById(R.id.btSiguienteMC);
@@ -94,6 +149,7 @@ public class votacion extends AppCompatActivity implements View.OnClickListener 
         tvAnteriorMC = findViewById(R.id.tvAnteriorMC);
         tvSiguienteMC = findViewById(R.id.tvSiguienteMC);
         tvActualMC = findViewById(R.id.tvActualMC);
+        tvVar = findViewById(R.id.tvVar);
     }
 
     public void mensaje (String m) {
