@@ -12,6 +12,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.lapinza.Registro;
+
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
@@ -24,28 +26,23 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 public class Encode {
-    private static final String URL = "http://lapinza.club/login.php";
+    private static final String URLlogin = "http://lapinza.club/login.php";
+    private static final String URLRegister = "http://lapinza.club/registro.php";
     private static String PRIVATE_KEY = "nolesabesaltrap1";
 
-    public static void checkUser(String user, String password, Context context){
-        if (user.length() < 0 || password.length() < 0) {
-            Toast.makeText(context, "No dejes campos vacios", Toast.LENGTH_LONG).show();
-            return;
-        }
-
-        sendToDataBase(encode(user), encode(password), context);
-    }
-
-    private static void sendToDataBase(String user, String password, Context context) {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL, new Response.Listener<String>() {
+    public static void loginToDataBase(String user, String password, Context context){
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLlogin, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.d("Base de datos", response);
+                Log.d("server", response);
                 switch (response){
                     case "true":
-                        //Modifica
+                        //todo ok
+
                         break;
                     case "false":
+                        //algun error
+
                         break;
                 }
             }
@@ -60,8 +57,8 @@ public class Encode {
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<String, String>();
 
-                params.put("nickname", user);
-                params.put("password", password);
+                params.put("nickname", encode(user));
+                params.put("password", encode(password));
 
                 return params;
             }
@@ -101,4 +98,46 @@ public class Encode {
         return new SecretKeySpec(PRIVATE_KEY.getBytes(), "AES");
     }
 
+    public static void sendDataToRegister(String name, String lastname, String nickname,String email, String password, Context context) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URLRegister, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                switch (response){
+                    case "dataError":
+                        //Este campo es cuando los campos no cumplen con ciertos criterios
+
+                        break;
+                    case "emailError":
+                        //Este campo es en caso de que el email este repetido
+
+                        break;
+                    case "true":
+                        //Cuando todo a sido validado
+                        break;
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(context, "El servidor/tu conexion no estan disponibles", Toast.LENGTH_LONG).show();
+            }
+        }){
+            @Nullable
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<String, String>();
+
+                params.put("name", encode(name));
+                params.put("lastname", encode(lastname));
+                params.put("nickname", nickname);
+                params.put("email", encode(email));
+                params.put("password", encode(password));
+
+                return params;
+            }
+        };
+
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+        requestQueue.add(stringRequest);
+    }
 }
